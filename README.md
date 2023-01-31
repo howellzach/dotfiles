@@ -17,4 +17,13 @@ xargs -I{} mv {} .config-backup/{}
 ```
 
 Setup inspired by https://www.atlassian.com/git/tutorials/Dotfiles
+## Setup Steps
+### zsh
+1. Install [Oh My Zsh](https://ohmyz.sh/)
+2. Install [Powerlevel10k theme](https://github.com/romkatv/powerlevel10k)
+3. Run `p10k configure to install fonts`
 
+### Neovim
+1. Install Neovim
+2. Install [Packer](https://github.com/wbthomason/packer.nvim)
+3. Open neovim and run `:PackerInstall`
