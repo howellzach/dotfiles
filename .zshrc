@@ -29,7 +29,7 @@ INSERT_MODE_INDICATOR="%F{yellow}+%f"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 # Aliases
