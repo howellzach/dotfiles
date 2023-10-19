@@ -31,3 +31,5 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable"})
 
 vim.keymap.set("n", "<leader>b", "<cmd>!black %<CR>", {desc = "Format file with Black"})
+
+vim.keymap.set('n', '<leader>m', ":Mason<CR>", {desc = 'Open Mason' })
