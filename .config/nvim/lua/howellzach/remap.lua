@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -27,9 +25,12 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Substitute word"})
+vim.keymap.set("n", "<leader>sub", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Substitute word"})
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable"})
 
 vim.keymap.set("n", "<leader>b", "<cmd>!black %<CR>", {desc = "Format file with Black"})
 
 vim.keymap.set('n', '<leader>m', ":Mason<CR>", {desc = 'Open Mason' })
+vim.keymap.set('n', '<leader>lz', ":Lazy<CR>", {desc = 'Open Lazy' })
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {desc = "Open undotree"})

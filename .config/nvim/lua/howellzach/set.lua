@@ -24,3 +24,9 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
+
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+
+vim.api.nvim_set_option("clipboard","unnamed")
+
