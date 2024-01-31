@@ -31,6 +31,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc =
 vim.keymap.set("n", "<leader>b", "<cmd>!black %<CR>", {desc = "Format file with Black"})
 
 vim.keymap.set('n', '<leader>m', ":Mason<CR>", {desc = 'Open Mason' })
-vim.keymap.set('n', '<leader>lz', ":Lazy<CR>", {desc = 'Open Lazy' })
+vim.keymap.set('n', '<leader>l', ":Lazy<CR>", {desc = 'Open Lazy' })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {desc = "Open undotree"})
