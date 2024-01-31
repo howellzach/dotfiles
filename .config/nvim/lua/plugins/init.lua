@@ -9,25 +9,6 @@ return {
         end,
     },
     "mbbill/undotree",
-    -- {
-    --     "VonHeikemen/lsp-zero.nvim",
-    --     dependencies = {
-    --         -- LSP Support
-    --         { "neovim/nvim-lspconfig" },
-    --         { "williamboman/mason.nvim" },
-    --         { "williamboman/mason-lspconfig.nvim" },
-    --         -- Autocompletion
-    --         { "hrsh7th/nvim-cmp" },
-    --         { "hrsh7th/cmp-buffer" },
-    --         { "hrsh7th/cmp-path" },
-    --         { "saadparwaiz1/cmp_luasnip" },
-    --         { "hrsh7th/cmp-nvim-lsp" },
-    --         { "hrsh7th/cmp-nvim-lua" },
-    --         -- Snippets
-    --         { "L3MON4D3/LuaSnip" },
-    --         { "rafamadriz/friendly-snippets" },
-    --     },
-    -- },
     {
         "numToStr/Comment.nvim",
         config = function()
@@ -59,10 +40,20 @@ return {
             require("toggleterm").setup({})
         end,
     },
-    -- {
-    -- 	"wesleimp/stylua.nvim",
-    -- 	keys = {
-    -- 		{ "<leader>fmt", '<cmd>lua require("stylua").format()<cr>', desc = "Format lua file" },
-    -- 	},
-    -- },
+    {
+        'petertriho/nvim-scrollbar',
+        dependencies = { "lewis6991/gitsigns.nvim" },
+        config = function()
+            require("scrollbar").setup({
+                handlers = {
+                    cursor = true,
+                    diagnostic = true,
+                    gitsigns = true, -- Requires gitsigns
+                    handle = true,
+                    search = false, -- Requires hlslens
+                    ale = false, -- Requires ALE
+                },
+            })
+        end,
+    },
 }
