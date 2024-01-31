@@ -137,26 +137,65 @@ return {
         keys = {
             {
                 "<leader>fm",
-                function() require("conform").format({ lsp_fallback = true }) end,
-                desc = "Format",
+                function()
+                    require("conform").format({ lsp_fallback = true })
+                end,
+                desc = "Format buffer",
+            },
+            {
+                "<leader>ft",
+                function()
+                    if vim.b.disable_autoformat or vim.g.disable_autoformat then
+                        vim.cmd("FormatEnable")
+                    else
+                        vim.cmd("FormatDisable")
+                    end
+                end,
+                desc = "Toggle auto-formating"
             },
         },
+        init = function()
+            local notify = require("notify")
+            vim.api.nvim_create_user_command("FormatDisable", function(args)
+                if args.bang then
+                    -- FormatDisable! will disable formatting just for this buffer
+                    vim.b.disable_autoformat = true
+                else
+                    vim.g.disable_autoformat = true
+                end
+                notify("autoformat on save disabled", "error", { title = "conform.nvim" })
+            end, {
+                desc = "Disable autoformat-on-save",
+                bang = true,
+            })
+            vim.api.nvim_create_user_command("FormatEnable", function()
+                vim.b.disable_autoformat = false
+                vim.g.disable_autoformat = false
+                notify("autoformat on save enabled", "info", { title = "conform.nvim" })
+            end, {
+                desc = "Re-enable autoformat-on-save",
+            })
+        end,
         opts = {
             formatters_by_ft = {
                 python = { "isort", "ruff_lsp" },
                 lua = { "lua_ls" },
+                go = { "gopls" },
                 -- "inject" is a special formatter from conform.nvim, which
                 -- formats treesitter-injected code. Basically, this makes
                 -- conform.nvim format python codeblocks inside a markdown file.
                 markdown = { "inject" },
             },
-            -- enable format-on-save
-            -- format_on_save = {
-            -- when no formatter is setup for a filetype, fallback to formatting
-            -- via the LSP. This is relevant e.g. for taplo (toml LSP), where the
-            -- LSP can handle the formatting for us
-            -- lsp_fallback = true,
-            -- },
+            -- enable format-on-save for specific languages
+            format_on_save = function(bufnr)
+                local filetypes = { "go", "lua" }
+                if not vim.tbl_contains(filetypes, vim.bo[bufnr].filetype) then
+                    print("not a autoformat filetype")
+                    return
+                end
+                print("we hit format on save")
+                return { timeout_ms = 500, lsp_fallback = true }
+            end
         },
     },
 }
