@@ -24,5 +24,5 @@ end
 
 vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>lua _open_term_toggle()<CR>",
     { desc = "Open floating terminal", noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>h", "<cmd>:ToggleTerm direction=horizontal size=18<CR>",
+vim.api.nvim_set_keymap("n", "<leader>ht", "<cmd>:ToggleTerm direction=horizontal size=18<CR>",
     { desc = "Open terminal at bottom", noremap = true, silent = true })
