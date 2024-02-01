@@ -28,5 +28,4 @@ vim.opt.colorcolumn = "100"
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 
-vim.api.nvim_set_option("clipboard","unnamed")
-
+vim.api.nvim_set_option("clipboard", "unnamed")
