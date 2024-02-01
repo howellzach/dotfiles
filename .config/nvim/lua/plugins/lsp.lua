@@ -193,7 +193,6 @@ return {
                     print("not a autoformat filetype")
                     return
                 end
-                print("we hit format on save")
                 return { timeout_ms = 500, lsp_fallback = true }
             end
         },
