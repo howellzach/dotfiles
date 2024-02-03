@@ -25,5 +25,4 @@ require("howellzach.numbertoggle")
 
 -- Plugin settings
 require('lazy').setup('plugins')
-require("howellzach.alpha")
-require("howellzach.toggleterm")
+-- require("howellzach.alpha")
