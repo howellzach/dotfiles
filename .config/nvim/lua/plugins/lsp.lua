@@ -125,7 +125,15 @@ return {
                                 organizeImports = false,
                             },
                         })
-                    end
+                    end,
+                    gopls = function()
+                        require('lspconfig').gopls.setup({
+                            settings = {
+                                completeUnimported = true,
+                                organizeImports = true,
+                            }
+                        })
+                    end,
                 }
             })
         end
@@ -151,7 +159,7 @@ return {
                         vim.cmd("FormatDisable")
                     end
                 end,
-                desc = "Toggle auto-formating"
+                desc = "Toggle auto-formatting"
             },
         },
         init = function()
@@ -180,7 +188,7 @@ return {
             formatters_by_ft = {
                 python = { "isort", "ruff_lsp" },
                 lua = { "lua_ls" },
-                go = { "gopls" },
+                go = { "goimports", "gopls" },
                 -- "inject" is a special formatter from conform.nvim, which
                 -- formats treesitter-injected code. Basically, this makes
                 -- conform.nvim format python codeblocks inside a markdown file.
@@ -190,7 +198,6 @@ return {
             format_on_save = function(bufnr)
                 local filetypes = { "go", "lua" }
                 if not vim.tbl_contains(filetypes, vim.bo[bufnr].filetype) then
-                    print("not a autoformat filetype")
                     return
                 end
                 return { timeout_ms = 500, lsp_fallback = true }
