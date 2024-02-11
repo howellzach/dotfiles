@@ -35,6 +35,7 @@ fi
 # Aliases
 alias py3="python3"
 alias vim="nvim"
+alias lg="lazygit"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Gopath
