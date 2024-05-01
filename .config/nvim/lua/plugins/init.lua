@@ -50,10 +50,10 @@ return {
                     diagnostic = true,
                     gitsigns = true, -- Requires gitsigns
                     handle = true,
-                    search = false, -- Requires hlslens
-                    ale = false, -- Requires ALE
+                    search = false,  -- Requires hlslens
+                    ale = false,     -- Requires ALE
                 },
             })
         end,
-    },
+    }
 }
